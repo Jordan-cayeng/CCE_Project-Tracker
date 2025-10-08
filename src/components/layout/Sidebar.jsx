@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Home, FolderKanban, CheckSquare, Settings } from "lucide-react";
+import { ThemeContext } from "../layout/Layout";
+import logoLight from "../../assets/Cay_Social_NavyLightBlue.svg";
+import logoDark from "../../assets/Cay_Social_LightBlueNavy.svg";
+
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(true);
   const location = useLocation();
+  const { darkMode } = useContext(ThemeContext);
 
   const navItems = [
     { id: "dashboard", label: "Dashboard", icon: <Home size={18} />, path: "/" },
@@ -17,17 +22,18 @@ export default function Sidebar() {
     <aside
       className={`${
         isOpen ? "w-64" : "w-20"
-      } bg-cce-dark text-white h-screen flex flex-col transition-all duration-300`}
+       } bg-cce-gray dark:bg-cce-dark text-cce-dark dark:text-cce-light h-screen flex flex-col transition-all duration-300`}
     >
-      {/* Top Section / Logo */}
-      <div className="flex items-center justify-between p-4 border-b border-cce-light/30">
-        <h1
-          className={`text-lg font-bold text-cce-light tracking-wide ${
-            !isOpen && "hidden"
-          } md:block`}
-        >
-          CCE Tracker
-        </h1>
+      {/* --- Top Section / Logo --- */}
+      <div className="flex items-center justify-between px-3 py-2 border-b border-cce-light/30">
+        {/* wrap logo in color context for theme switching */}
+      <img
+        src={darkMode ? logoDark : logoLight}
+        alt="CCE logo"
+        className={`${isOpen ? "h-10" : "h-8"} w-auto transition-all duration-300 object-contain`}
+        draggable="false"
+      />
+
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="text-cce-light hover:text-white"
@@ -37,7 +43,7 @@ export default function Sidebar() {
         </button>
       </div>
 
-      {/* Navigation Links */}
+      {/* --- Navigation Links --- */}
       <nav className="flex-1 px-2 mt-4 space-y-1">
         {navItems.map((item) => (
           <Link
@@ -55,11 +61,10 @@ export default function Sidebar() {
         ))}
       </nav>
 
-      {/* Footer */}
+      {/* --- Footer --- */}
       <div className="p-4 border-t border-cce-light/30 text-xs text-cce-light">
         {isOpen && <>© {new Date().getFullYear()} Cay Civil Engineering</>}
       </div>
     </aside>
   );
 }
-

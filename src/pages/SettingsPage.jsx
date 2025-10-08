@@ -1,31 +1,9 @@
 // src/pages/SettingsPage.jsx
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { ThemeContext } from "../components/layout/Layout";
 
 export default function SettingsPage() {
-  const [darkMode, setDarkMode] = useState(false);
-
-  // Load saved theme preference
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark") {
-      setDarkMode(true);
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, []);
-
-  // Update theme whenever the toggle changes
-  useEffect(() => {
-    const root = document.documentElement;
-    if (darkMode) {
-      root.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      root.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [darkMode]);
+  const { darkMode, setDarkMode } = useContext(ThemeContext);
 
   return (
     <div className="p-6 space-y-6">
@@ -34,6 +12,7 @@ export default function SettingsPage() {
           Settings
         </h1>
 
+        {/* Toggle control */}
         <div className="flex items-center justify-between">
           <span className="text-gray-700 dark:text-gray-200">
             Appearance Mode
@@ -54,7 +33,7 @@ export default function SettingsPage() {
         </div>
 
         <p className="mt-3 text-sm text-gray-600 dark:text-gray-300">
-          Toggle between light and dark mode. Your choice is saved automatically.
+          Toggle between light and dark mode. Your preference is saved automatically.
         </p>
       </div>
     </div>

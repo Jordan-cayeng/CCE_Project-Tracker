@@ -3,13 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* --- Global base layer for Calibri --- */
-@layer base {
-  html {
-    @apply font-sans;
-  }
-}
-
 /* --- Your existing styles --- */
 :root {
   font-family: Calibri, Arial, Helvetica, sans-serif;

@@ -1,24 +1,49 @@
-import React, { useState } from "react";
+// src/components/layout/Layout.jsx
+import React, { useEffect, useState } from "react";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 
-export default function Layout({ children }) {
-  const [currentPage, setCurrentPage] = useState("dashboard");
+export const ThemeContext = React.createContext();
 
-  const pageTitles = {
-    dashboard: "Dashboard Overview",
-    projects: "Projects",
-    tasks: "Tasks",
-    settings: "Settings",
-  };
+export default function Layout({ children }) {
+  const [darkMode, setDarkMode] = useState(false);
+
+  // Load saved preference
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      setDarkMode(true);
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, []);
+
+  // Apply whenever darkMode changes
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
 
   return (
-    <div className="flex min-h-screen bg-cce-gray">
-      <Sidebar currentPage={currentPage} onNavigate={setCurrentPage} />
-      <main className="flex-1 flex flex-col font-sans">
-        <Header title={pageTitles[currentPage]} />
-        <div className="p-6 space-y-6 bg-cce-gray/40">{children}</div>
-      </main>
-    </div>
+    <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
+      {/* 👇 global wrapper that was incorrectly outside the component */}
+      <div className="min-h-screen font-sans bg-cce-gray text-cce-dark dark:bg-cce-dark dark:text-cce-light transition-colors duration-300">
+        <div className="flex min-h-screen">
+          <Sidebar />
+          <main className="flex-1 flex flex-col font-sans">
+            <Header />
+            <div className="p-6 space-y-6 bg-cce-gray/40 dark:bg-cce-dark/60 transition-colors duration-300">
+              {children}
+            </div>
+          </main>
+        </div>
+      </div>
+    </ThemeContext.Provider>
   );
 }
