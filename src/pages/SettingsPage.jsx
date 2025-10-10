@@ -11,30 +11,6 @@ export default function SettingsPage() {
         <h1 className="text-2xl font-semibold text-cce-dark dark:text-cce-light mb-4">
           Settings
         </h1>
-
-        {/* Toggle control */}
-        <div className="flex items-center justify-between">
-          <span className="text-gray-700 dark:text-gray-200">
-            Appearance Mode
-          </span>
-
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className={`relative inline-flex h-6 w-12 items-center rounded-full transition-colors duration-300 ${
-              darkMode ? "bg-cce-light" : "bg-cce-dark"
-            }`}
-          >
-            <span
-              className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300 ${
-                darkMode ? "translate-x-6" : "translate-x-1"
-              }`}
-            />
-          </button>
-        </div>
-
-        <p className="mt-3 text-sm text-gray-600 dark:text-gray-300">
-          Toggle between light and dark mode. Your preference is saved automatically.
-        </p>
       </div>
     </div>
   );

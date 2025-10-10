@@ -1,21 +1,24 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: "class", //<-- This enables the .dark class toggle
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
         cce: {
-          dark: "#1C355E",
-          light: "#B6DCE1",
-          gray: "#EDEDED",
+          dark: "#1C355E",   // site background
+          light: "#B6DCE1",  // header titles
+          gray: "#EDEDED",   // subtle text / borders
         },
       },
       fontFamily: {
         sans: ["Calibri", "Arial", "Helvetica", "sans-serif"],
+      },
+      boxShadow: {
+        subtle: "0 1px 2px rgba(0, 0, 0, 0.05)",
+        card: "0 2px 8px rgba(28, 53, 94, 0.08)",
+      },
+      borderRadius: {
+        xl: "1rem",
       },
     },
   },
