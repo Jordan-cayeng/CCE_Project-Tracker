@@ -1,112 +1,70 @@
 {
   "projects": [
     {
-      "id": "22007",
-      "name": "Seed of Abraham Ministry",
-      "client": "SOAM",
-      "priority": "High",
-      "status": "In Review",
-      "manager": "John Smith"
-    },
-    {
-      "id": "22008",
+      "id": "CCE-25-004",
       "name": "Calissa Cay Townhomes",
-      "client": "Shipyard Development Group",
-      "priority": "Medium",
+      "client": "Windward Shipyard Marina",
       "status": "Active",
-      "manager": "Jane Doe"
-    }
-  ],
-  "tasks": [
-    {
-      "id": "T001",
-      "projectId": "22007",
-      "name": "Pre-Application Comments",
-      "description": "Review city feedback and compile client response package.",
-      "owner": "Jane Doe",
-      "status": "Complete",
-      "startDate": "2024-05-20",
-      "lastUpdated": "2024-06-04",
-      "notes": [
+      "progress": 65,
+      "contacts": {
+        "internal": [
+          { "role": "Project Manager", "name": "John Doe", "email": "johnd@cce" },
+          { "role": "Designer", "name": "Emily Smith", "email": "esmith@cce" }
+        ],
+        "external": [
+          { "category": "Surveyor", "name": "Windward Survey", "phone": "904-555-2134" },
+          { "category": "Municipality", "name": "City of St. Augustine", "email": "eng@city.gov" }
+        ]
+      },
+      "phases": [
         {
-          "id": "N001",
-          "text": "Received all comments from the city. Preparing summary for client review.",
-          "author": "Jane Doe",
-          "timestamp": "2024-05-30T09:00:00Z"
-        },
-        {
-          "id": "N002",
-          "text": "Client approved responses — ready for submittal.",
-          "author": "John Smith",
-          "timestamp": "2024-06-04T10:30:00Z"
-        }
-      ],
-      "subtasks": [
-        {
-          "id": "S001",
-          "name": "Compile feedback summary",
-          "assignedTo": "Mike Brown",
-          "status": "Complete",
-          "notes": [
-            {
-              "id": "SN001",
-              "text": "Uploaded compiled summary to SharePoint.",
-              "author": "Mike Brown",
-              "timestamp": "2024-06-02T09:00:00Z"
-            }
-          ]
-        },
-        {
-          "id": "S002",
-          "name": "Draft client response letter",
-          "assignedTo": "Jane Doe",
-          "status": "Complete",
-          "notes": [
-            {
-              "id": "SN002",
-              "text": "Letter reviewed by project manager.",
-              "author": "Jane Doe",
-              "timestamp": "2024-06-03T14:15:00Z"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "T002",
-      "projectId": "22008",
-      "name": "Stormwater Design Review",
-      "description": "Evaluate stormwater design and ensure it meets SJRWMD standards.",
-      "owner": "Mike Brown",
-      "status": "In Progress",
-      "startDate": "2024-09-10",
-      "lastUpdated": "2025-10-10T21:36:43.386Z",
-      "notes": [
-        {
-          "id": "N003",
-          "text": "Submitted design package; awaiting feedback from the developer.",
-          "author": "Mike Brown",
-          "timestamp": "2024-10-01T15:20:00Z"
-        },
-        {
-          "id": "N1760124490004",
-          "text": "just checked with the client they will be getting feedback soon",
-          "author": "System User",
-          "timestamp": "2025-10-10T19:28:10.004Z"
-        }
-      ],
-      "subtasks": [
-        {
-          "id": "S1760132184231",
-          "name": "test",
-          "assignedTo": "test1",
+          "id": 2,
+          "name": "Engineering & Construction Documents",
           "status": "In Progress",
-          "notes": [
+          "goal": "Develop full design drawings and calculations.",
+          "tasks": [
             {
-              "id": "SN1760132203386",
-              "text": "test",
-              "author": "System User",
-              "timestamp": "2025-10-10T21:36:43.386Z"
+              "id": 201,
+              "name": "Grading & Drainage Design",
+              "status": "In Progress",
+              "notes": ["Initial grading plan under review."],
+              "subtasks": [
+                {
+                  "id": 2011,
+                  "name": "Develop Grading Plan",
+                  "status": "Complete",
+                  "notes": ["Contours adjusted near basin 3."]
+                }
+              ]
+            },
+            {
+              "id": 202,
+              "name": "Utility Design",
+              "status": "In Progress",
+              "notes": ["Need updated as-builts from field survey."],
+              "subtasks": [
+                {
+                  "id": 2021,
+                  "name": "Water Layout",
+                  "status": "Complete",
+                  "notes": ["Added hydrant near Bldg 5."]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "Meetings & Coordination",
+          "status": "In Progress",
+          "goal": "Maintain alignment among all stakeholders.",
+          "tasks": [
+            {
+              "id": 401,
+              "name": "Client Coordination",
+              "status": "In Progress",
+              "notes": ["Bi-weekly check-ins ongoing."],
+              "subtasks": []
             }
           ]
         }
