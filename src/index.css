@@ -1,29 +1,25 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* 🌎 Global defaults for the app */
-html, body, #root {
-  @apply min-h-screen w-full font-sans;
-}
+/* ✅ Put all @apply rules inside a layer block */
+@layer base {
+  html, body, #root {
+    @apply min-h-screen w-full font-sans;
+  }
 
-/* Light theme defaults (inherited by Layout) */
-body {
-  @apply bg-gray-50 text-gray-900;
-}
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
 
-/* Remove margins on root to allow full-width layouts */
-#root {
-  @apply m-0 p-0;
-}
+  #root {
+    @apply m-0 p-0;
+  }
 
-/* Optional: set smoother font rendering */
-body, button, input, textarea {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  body, button, input, textarea {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-/* Optional: consistent link color across app */
-a {
-  @apply text-blue-600 hover:text-blue-700 transition;
-}
+  a {
+    @apply text-blue-600 hover:text-blue-700 transition;
+  }
+} 
