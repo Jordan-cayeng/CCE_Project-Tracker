@@ -1,12 +1,16 @@
-// src/components/layout/Header.jsx
-import React from "react";
-
-export default function Header() {
-  return (
-    <header className="px-6 py-3 flex justify-between items-center sticky top-0 z-10">
-      <h2 className="text-lg font-semibold text-cce-light">
-        Cay Civil Engineering Project Tracker
-      </h2>
-    </header>
-  );
-}
+<header className="p-4 flex items-center justify-between border-b border-gray-200">
+  <h1 className="text-lg font-semibold">Project Tracker</h1>
+  <div className="flex items-center gap-4">
+    <button className="text-sm hover:text-blue-600 transition">
+      Notifications
+    </button>
+    <div className="flex items-center gap-2">
+      <img
+        src="/user-avatar.png"
+        alt="User Avatar"
+        className="w-8 h-8 rounded-full border border-gray-300"
+      />
+      <span className="text-sm">Jordan</span>
+    </div>
+  </div>
+</header>

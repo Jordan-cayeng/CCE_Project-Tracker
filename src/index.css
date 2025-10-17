@@ -1,61 +1,29 @@
-/* --- Tailwind directives --- */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* --- Global site styles (fixed dark theme) --- */
-:root {
-  font-family: Calibri, Arial, Helvetica, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-}
-
-/* Base layout */
+/* 🌎 Global defaults for the app */
 html, body, #root {
-  height: 100%;
-  margin: 0;
-  background-color: #1C355E;   /* cce.dark */
-  color: #FFFFFF;              /* default text color */
+  @apply min-h-screen w-full font-sans;
 }
 
-/* Headings use the light accent color */
-h1, h2, h3, h4, h5, h6 {
-  color: #B6DCE1;              /* cce.light */
-  margin: 0;
-  line-height: 1.2;
+/* Light theme defaults (inherited by Layout) */
+body {
+  @apply bg-gray-50 text-gray-900;
 }
 
-/* Body text defaults to white; subtle text can use gray manually in JSX */
-p, span, li, td, th {
-  color: #FFFFFF;
+/* Remove margins on root to allow full-width layouts */
+#root {
+  @apply m-0 p-0;
 }
 
-/* Links */
+/* Optional: set smoother font rendering */
+body, button, input, textarea {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optional: consistent link color across app */
 a {
-  color: #B6DCE1;
-  text-decoration: none;
-  transition: color 0.2s ease-in-out;
+  @apply text-blue-600 hover:text-blue-700 transition;
 }
-a:hover {
-  color: #EDEDED;              /* lighter on hover */
-}
-
-/* Buttons */
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #B6DCE1;   /* light accent button */
-  color: #1C355E;              /* dark text for contrast */
-  cursor: pointer;
-  transition: background-color 0.25s, border-color 0.25s;
-}
-button:hover {
-  background-color: #EDEDED;
-  border-color: #B6DCE1;
-}
-
-/* Remove the Vite template’s prefers-color-scheme rules */
