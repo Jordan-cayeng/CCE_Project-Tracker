@@ -3,7 +3,7 @@ import ProjectHeader from "../components/Project/ProjectHeader";
 import ActivityFeed from "../components/Project/ActivityFeed";
 import PhaseCard from "../components/Project/PhaseCard";
 import ContactsSection from "../components/Project/ContactsSection";
-import { getProjects } from "../../lib/api";
+import { getProjects } from "../lib/api";
 import LoadingSpinner from "../components/ui/LoadingSpinner";
 
 export default function ProjectsPage() {
@@ -30,7 +30,7 @@ export default function ProjectsPage() {
   const filteredProjects = useMemo(() => {
     if (!searchTerm) return [];
     return projects.filter((p) =>
-      (p.projectName || "")
+      (p.name || "")
         .toLowerCase()
         .includes(searchTerm.toLowerCase())
     );
@@ -39,7 +39,7 @@ export default function ProjectsPage() {
   // 🧠 Handle selection
   const handleSelectProject = (selected) => {
     setProject(selected);
-    setSearchTerm(selected.projectName);
+    setSearchTerm(selected.name);
     setIsDropdownOpen(false);
   };
 
@@ -97,7 +97,7 @@ export default function ProjectsPage() {
                 className="px-4 py-2 text-sm text-gray-800 hover:bg-blue-100 hover:text-blue-700 cursor-pointer flex justify-between items-center"
               >
                 <div className="flex flex-col">
-                  <span className="font-medium">{p.projectName}</span>
+                  <span className="font-medium">{p.name}</span>
                   <span className="text-xs text-gray-500">
                     {p.client || "No client"}
                   </span>
@@ -105,12 +105,12 @@ export default function ProjectsPage() {
                 <span
                   className={`text-xs px-2 py-1 rounded ${
                     p.status === "Active"
-                      ? "bg-green-100 text-green-700"
+                      ? "bg-cce-positive text-cce-textLight"
                       : p.status === "In Progress"
-                      ? "bg-yellow-100 text-yellow-700"
+                      ? "bg-cce-light text-cce-textDark"
                       : p.status === "Complete"
-                      ? "bg-gray-200 text-gray-600"
-                      : "bg-gray-100 text-gray-500"
+                      ? "bg-cce-light text-cce-textDark"
+                      : "bg-cce-gray text-cce-textDark"
                   }`}
                 >
                   {p.status}
